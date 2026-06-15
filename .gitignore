@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Guías locales para agentes de IA (no productivas, no subir al repo)
+rutai_ai_guides/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
