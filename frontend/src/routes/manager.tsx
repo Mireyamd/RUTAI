@@ -49,10 +49,10 @@ function ManagerPage() {
     <main id="contenido" className="mx-auto max-w-3xl px-5 py-10">
       <header>
         <h1 className="mt-0 text-3xl font-extrabold leading-tight">Panel gestor RUTAI</h1>
-        <p className="mt-2 inline-block rounded-full bg-[var(--color-surface-2)] px-4 py-1 text-base font-bold text-[var(--color-accent)]">
+        <p className="mt-2 inline-block rounded-full bg-surface-2 px-4 py-1 text-base font-bold text-accent">
           Vista prototipo
         </p>
-        <p className="mt-3 text-lg text-[var(--color-muted)]">
+        <p className="mt-3 text-lg text-muted">
           Resumen del estado de la ruta. Los reportes provienen del backend; algunas métricas
           generales aún son simuladas.
         </p>
@@ -87,38 +87,32 @@ function ManagerPage() {
         {reports ? (
           <>
             <ul className="m-0 mt-4 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
-              <li className="rounded-2xl bg-[var(--color-surface)] p-6">
-                <p className="m-0 text-base font-bold text-[var(--color-muted)]">
-                  Total de reportes
-                </p>
+              <li className="rounded-2xl bg-surface p-6">
+                <p className="m-0 text-base font-bold text-muted">Total de reportes</p>
                 <p className="m-0 mt-2 text-3xl font-extrabold">{total}</p>
               </li>
               {byCategory.map((item) => (
-                <li key={item.label} className="rounded-2xl bg-[var(--color-surface)] p-6">
-                  <p className="m-0 text-base font-bold text-[var(--color-muted)]">{item.label}</p>
+                <li key={item.label} className="rounded-2xl bg-surface p-6">
+                  <p className="m-0 text-base font-bold text-muted">{item.label}</p>
                   <p className="m-0 mt-2 text-3xl font-extrabold">{item.value}</p>
                 </li>
               ))}
             </ul>
 
             {total === 0 ? (
-              <p className="mt-4 text-lg text-[var(--color-muted)]">
+              <p className="mt-4 text-lg text-muted">
                 Aún no hay reportes registrados. Cuando alguien envíe un reporte, aparecerá aquí.
               </p>
             ) : (
               <ul className="m-0 mt-6 list-none space-y-4 p-0">
                 {reports.map((report) => (
-                  <li key={report.id} className="rounded-2xl bg-[var(--color-surface)] p-5">
+                  <li key={report.id} className="rounded-2xl bg-surface p-5">
                     <p className="m-0 font-bold">Estación {report.station_id}</p>
-                    <p className="m-0 mt-1 text-[var(--color-muted)]">
-                      Motivo: {categoryLabel(report.category)}
-                    </p>
+                    <p className="m-0 mt-1 text-muted">Motivo: {categoryLabel(report.category)}</p>
                     {report.description ? (
-                      <p className="m-0 mt-1 text-[var(--color-muted)]">
-                        Detalle: {report.description}
-                      </p>
+                      <p className="m-0 mt-1 text-muted">Detalle: {report.description}</p>
                     ) : null}
-                    <p className="m-0 mt-1 text-sm text-[var(--color-muted)]">
+                    <p className="m-0 mt-1 text-sm text-muted">
                       Folio {report.id} · {formatDate(report.created_at)} · Estado: {report.status}
                     </p>
                   </li>
@@ -133,13 +127,11 @@ function ManagerPage() {
         <h2 id="metricas-titulo" className="text-2xl font-bold">
           Métricas de la ruta
         </h2>
-        <p className="text-[var(--color-muted)]">
-          Datos simulados para esta etapa (vista prototipo).
-        </p>
+        <p className="text-muted">Datos simulados para esta etapa (vista prototipo).</p>
         <ul className="m-0 grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
           {SIMULATED_METRICS.map((metric) => (
-            <li key={metric.label} className="rounded-2xl bg-[var(--color-surface)] p-6">
-              <p className="m-0 text-base font-bold text-[var(--color-muted)]">{metric.label}</p>
+            <li key={metric.label} className="rounded-2xl bg-surface p-6">
+              <p className="m-0 text-base font-bold text-muted">{metric.label}</p>
               <p className="m-0 mt-2 text-3xl font-extrabold">{metric.value}</p>
             </li>
           ))}

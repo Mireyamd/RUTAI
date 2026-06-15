@@ -49,23 +49,21 @@ function ReportPage() {
   return (
     <main id="contenido" className="mx-auto max-w-2xl px-5 py-10">
       <header>
-        <p className="m-0 text-lg font-bold text-[var(--color-accent)]">
-          Reporte de la estación {stationId}
-        </p>
+        <p className="m-0 text-lg font-bold text-accent">Reporte de la estación {stationId}</p>
         <h1 className="mt-2 text-3xl font-extrabold leading-tight">Reportar una barrera</h1>
-        <p className="mt-3 text-xl text-[var(--color-muted)]">
+        <p className="mt-3 text-xl text-muted">
           Cuéntanos qué dificultó tu experiencia. No pedimos tu nombre ni datos personales. Elige un
           motivo y envía el reporte.
         </p>
       </header>
 
       <form onSubmit={handleSubmit} className="mt-8">
-        <fieldset className="m-0 rounded-2xl border-2 border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+        <fieldset className="m-0 rounded-2xl border-2 border-border bg-surface p-6">
           <legend className="px-2 text-xl font-bold">¿Qué ocurrió?</legend>
           <ul className="m-0 list-none space-y-3 p-0">
             {BARRIER_OPTIONS.map((option) => (
               <li key={option.category}>
-                <label className="flex cursor-pointer items-center gap-3 rounded-xl bg-[var(--color-surface-2)] p-4 text-lg">
+                <label className="flex cursor-pointer items-center gap-3 rounded-xl bg-surface-2 p-4 text-lg">
                   <input
                     type="radio"
                     name="motivo"
@@ -81,11 +79,11 @@ function ReportPage() {
           </ul>
         </fieldset>
 
-        <div className="mt-6 rounded-2xl border-2 border-[var(--color-border)] bg-[var(--color-surface)] p-6">
+        <div className="mt-6 rounded-2xl border-2 border-border bg-surface p-6">
           <label htmlFor="descripcion" className="block text-xl font-bold">
             Detalle adicional (opcional)
           </label>
-          <p className="mt-2 mb-3 text-base text-[var(--color-muted)]">
+          <p className="mt-2 mb-3 text-base text-muted">
             Si quieres, describe lo que pasó. No incluyas tu nombre ni datos personales.
           </p>
           <textarea
@@ -95,7 +93,7 @@ function ReportPage() {
             onChange={(event) => setDescription(event.target.value)}
             maxLength={1000}
             rows={4}
-            className="w-full rounded-xl border-2 border-[var(--color-border)] bg-[var(--color-surface-2)] p-4 text-lg"
+            className="w-full rounded-xl border-2 border-border bg-surface-2 p-4 text-lg"
           />
         </div>
 

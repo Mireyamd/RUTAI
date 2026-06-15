@@ -34,6 +34,27 @@ async function get<T>(path: string): Promise<T> {
   return (await response.json()) as T;
 }
 
+async function post<T>(path: string, body: unknown): Promise<T> {
+  const url = `${API_BASE_URL}${path}`;
+
+  let response: Response;
+  try {
+    response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(body),
+    });
+  } catch {
+    throw new ApiError(0, "No se pudo conectar con el servidor de RUTAI.");
+  }
+
+  if (!response.ok) {
+    throw new ApiError(response.status, `La petición a ${path} falló (${response.status}).`);
+  }
+
+  return (await response.json()) as T;
+}
+
 /**
  * Construye la URL absoluta de un recurso multimedia servido por el backend
  * (por ejemplo el audio guía, cuyo `url` llega como ruta relativa).
@@ -46,4 +67,5 @@ export function mediaUrl(path: string): string {
 export const apiClient = {
   baseUrl: API_BASE_URL,
   get,
+  post,
 };
