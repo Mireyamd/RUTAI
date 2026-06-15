@@ -9,7 +9,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from core.config import settings
-from routes import health, stations
+from routes import health, reports, stations
 
 app = FastAPI(
     title=settings.app_name,
@@ -41,3 +41,4 @@ def root() -> dict:
 # Routers
 app.include_router(health.router, prefix="/api")
 app.include_router(stations.router, prefix="/api")
+app.include_router(reports.router, prefix="/api")

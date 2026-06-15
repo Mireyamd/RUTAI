@@ -77,3 +77,65 @@ def test_station_not_found():
 def test_touch_not_found():
     response = client.get("/api/stations/EST-001/touch")
     assert response.status_code == 404
+
+
+def test_create_barrier_report():
+    response = client.post(
+        "/api/reports",
+        json={
+            "station_id": "EST-003",
+            "category": "audio_not_working",
+            "description": "El audio no se reproduce en la estacion.",
+        },
+    )
+    assert response.status_code == 201
+    body = response.json()
+    assert body["id"].startswith("REP-")
+    assert body["station_id"] == "EST-003"
+    assert body["category"] == "audio_not_working"
+    assert body["status"] == "open"
+    assert body["description"] == "El audio no se reproduce en la estacion."
+    assert "created_at" in body
+
+
+def test_list_barrier_reports():
+    client.post(
+        "/api/reports",
+        json={
+            "station_id": "EST-002",
+            "category": "signage_missing",
+            "description": "Falta senalizacion tactil.",
+        },
+    )
+
+    response = client.get("/api/reports")
+    assert response.status_code == 200
+    body = response.json()
+    assert isinstance(body, list)
+    assert any(report["station_id"] == "EST-002" for report in body)
+
+
+def test_create_barrier_report_station_not_found():
+    response = client.post(
+        "/api/reports",
+        json={
+            "station_id": "EST-999",
+            "category": "unclear_route",
+            "description": "La ruta no queda clara.",
+        },
+    )
+    assert response.status_code == 404
+    assert response.json()["detail"] == "Station not found"
+
+
+def test_create_barrier_report_rejects_personal_data_fields():
+    response = client.post(
+        "/api/reports",
+        json={
+            "station_id": "EST-003",
+            "category": "other",
+            "description": "Comentario anonimo.",
+            "email": "persona@example.com",
+        },
+    )
+    assert response.status_code == 422

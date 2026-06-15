@@ -162,3 +162,18 @@ curl http://127.0.0.1:8001/api/stations/EST-002/touch
 - **Sprint 0 usa datos mock**; Supabase/PostgreSQL aún no está conectado.
 - No hay autenticación ni IA ni reportes reales todavía.
 - `venv/` y `.env` no se suben al repositorio (ver `.gitignore`).
+
+## Sprint 1 Backend
+
+Sprint 1 agrega una capa `repositories/` entre servicios y mocks para preparar
+la migracion a Supabase/PostgreSQL sin modificar rutas existentes. Tambien agrega
+reportes anonimos de barreras:
+
+| Metodo | Ruta | Descripcion |
+|---|---|---|
+| POST | `/api/reports` | Crea un reporte anonimo de barrera |
+| GET | `/api/reports` | Lista reportes anonimos |
+
+Los reportes no recolectan datos personales. El contrato completo Sprint 1,
+modelo de datos propuesto, preparacion Supabase/PostgreSQL y criterios de no
+recoleccion estan en `docs/sprint_1_backend.md`.
