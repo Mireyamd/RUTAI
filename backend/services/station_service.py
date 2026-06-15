@@ -1,30 +1,33 @@
-"""Lógica de negocio para las estaciones de RUTAI.
+"""Business logic for RUTAI stations.
 
-Hoy lee de datos mock (data/mock_stations.py). En sprints futuros esta capa se
-reemplazará por consultas a Supabase/PostgreSQL manteniendo la misma interfaz.
+Data is read through repositories/ so the source can move from mocks to
+Supabase/PostgreSQL without changing routes or public contracts.
 """
 
-from data.mock_stations import MOCK_STATIONS
+from repositories import station_repository
 from schemas.station_schema import StationResponse
 
 
 def get_all_stations() -> list[StationResponse]:
-    """Devuelve todas las estaciones ordenadas por su campo `order`."""
-    stations = [StationResponse(**station) for station in MOCK_STATIONS]
+    """Return all stations ordered by the `order` field."""
+    stations = [
+        StationResponse(**station)
+        for station in station_repository.list_stations()
+    ]
     return sorted(stations, key=lambda station: station.order)
 
 
 def get_station_by_id(station_id: str) -> StationResponse | None:
-    """Devuelve la estación con el ID dado o None si no existe."""
-    for station in MOCK_STATIONS:
-        if station["id"] == station_id:
-            return StationResponse(**station)
-    return None
+    """Return the station with the given ID, or None when missing."""
+    station = station_repository.get_station_by_id(station_id)
+    if station is None:
+        return None
+    return StationResponse(**station)
 
 
 def get_station_by_code(code: str) -> StationResponse | None:
-    """Devuelve la estación con el código público dado o None si no existe."""
-    for station in MOCK_STATIONS:
-        if station["code"] == code:
-            return StationResponse(**station)
-    return None
+    """Return the station with the given public code, or None when missing."""
+    station = station_repository.get_station_by_code(code)
+    if station is None:
+        return None
+    return StationResponse(**station)

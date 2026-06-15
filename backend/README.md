@@ -64,6 +64,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## VS Code / Pylance
+
+Si VS Code muestra `Import "fastapi" could not be resolved` en `main.py`, revisa
+que el interprete de Python apunte al entorno virtual del backend:
+
+```text
+backend/venv/Scripts/python.exe
+```
+
+En VS Code: `Python: Select Interpreter` -> `Enter interpreter path` -> selecciona
+`backend/venv/Scripts/python.exe`. No cambies los imports de `main.py`; FastAPI
+esta declarado en `requirements.txt` y debe resolverse con ese interprete.
+
 ## 3. Configurar variables de entorno (opcional)
 
 Copia el archivo de ejemplo. Si no lo haces, se usan valores por defecto.
@@ -162,3 +175,18 @@ curl http://127.0.0.1:8001/api/stations/EST-002/touch
 - **Sprint 0 usa datos mock**; Supabase/PostgreSQL aún no está conectado.
 - No hay autenticación ni IA ni reportes reales todavía.
 - `venv/` y `.env` no se suben al repositorio (ver `.gitignore`).
+
+## Sprint 1 Backend
+
+Sprint 1 agrega una capa `repositories/` entre servicios y mocks para preparar
+la migracion a Supabase/PostgreSQL sin modificar rutas existentes. Tambien agrega
+reportes anonimos de barreras:
+
+| Metodo | Ruta | Descripcion |
+|---|---|---|
+| POST | `/api/reports` | Crea un reporte anonimo de barrera |
+| GET | `/api/reports` | Lista reportes anonimos |
+
+Los reportes no recolectan datos personales. El contrato completo Sprint 1,
+modelo de datos propuesto, preparacion Supabase/PostgreSQL y criterios de no
+recoleccion estan en `docs/sprint_1_backend.md`.

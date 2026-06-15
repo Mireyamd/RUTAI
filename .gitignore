@@ -25,3 +25,22 @@ rutai_ai_guides/
 *.njsproj
 *.sln
 *.sw?
+
+# Python / backend
+backend/venv/
+backend/.env
+**pycache**/
+*.pyc
+.pytest_cache/
+
+# Frontend / Node
+frontend/node_modules/
+frontend/.env
+frontend/dist/
+frontend/.vite/
+node_modules/
+dist/
+.vite/
+
+# OS / editor
+Thumbs.db
