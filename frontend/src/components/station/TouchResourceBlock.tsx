@@ -12,7 +12,7 @@ export function TouchResourceBlock({ resource }: TouchResourceBlockProps) {
   if (!resource) return null;
 
   return (
-    <section aria-labelledby="tactil-titulo" className="rounded-2xl bg-[var(--color-surface)] p-6">
+    <section aria-labelledby="tactil-titulo" className="rounded-2xl bg-surface p-6">
       <h2 id="tactil-titulo" className="mt-0 text-2xl font-bold">
         Recurso táctil disponible
       </h2>
@@ -28,20 +28,20 @@ export function TouchResourceBlock({ resource }: TouchResourceBlockProps) {
       <dl className="mt-4 space-y-3">
         <div>
           <dt className="font-bold">Instrucción</dt>
-          <dd className="m-0 text-[var(--color-muted)]">{resource.instruction}</dd>
+          <dd className="m-0 text-muted">{resource.instruction}</dd>
         </div>
 
         {resource.restriction ? (
           <div>
             <dt className="font-bold">Restricción</dt>
-            <dd className="m-0 text-[var(--color-muted)]">{resource.restriction}</dd>
+            <dd className="m-0 text-muted">{resource.restriction}</dd>
           </div>
         ) : null}
 
         {resource.material ? (
           <div>
             <dt className="font-bold">Material</dt>
-            <dd className="m-0 text-[var(--color-muted)]">{resource.material}</dd>
+            <dd className="m-0 text-muted">{resource.material}</dd>
           </div>
         ) : null}
       </dl>

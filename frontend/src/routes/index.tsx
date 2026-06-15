@@ -10,23 +10,20 @@ function HomePage() {
   return (
     <main id="contenido" className="mx-auto max-w-2xl px-5 py-10">
       <header>
-        <p className="m-0 text-lg font-bold tracking-wide text-[var(--color-accent)]">RUTAI</p>
+        <p className="m-0 text-lg font-bold tracking-wide text-accent">RUTAI</p>
         <h1 className="mt-2 text-4xl font-extrabold leading-tight">
           Ruta sensorial accesible para turismo sin barreras
         </h1>
-        <p className="mt-4 text-xl text-[var(--color-muted)]">
+        <p className="mt-4 text-xl text-muted">
           Explora estaciones con audio, orientación, seguridad y recursos táctiles.
         </p>
       </header>
 
-      <section
-        aria-labelledby="para-quien"
-        className="mt-8 rounded-2xl bg-[var(--color-surface)] p-6"
-      >
+      <section aria-labelledby="para-quien" className="mt-8 rounded-2xl bg-surface p-6">
         <h2 id="para-quien" className="mt-0 text-2xl font-bold">
           Pensada para ti
         </h2>
-        <p className="m-0 text-[var(--color-muted)]">
+        <p className="m-0 text-muted">
           RUTAI acompaña a personas con discapacidad visual o baja visión durante una ruta
           turística. Cada acción se entiende solo escuchándola. No prometemos independencia total:
           buscamos aumentar tu autonomía, seguridad y orientación durante el recorrido.

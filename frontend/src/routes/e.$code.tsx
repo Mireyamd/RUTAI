@@ -19,7 +19,7 @@ function StationPage() {
   return (
     <main id="contenido" className="mx-auto max-w-2xl px-5 py-10">
       <header>
-        <p className="m-0 text-lg font-bold text-[var(--color-accent)]">
+        <p className="m-0 text-lg font-bold text-accent">
           {data ? `Estación ${data.station.order} de la ruta RUTAI` : `Estación ${code}`}
         </p>
         <h1 className="mt-2 text-3xl font-extrabold leading-tight">
@@ -27,9 +27,7 @@ function StationPage() {
         </h1>
         {data ? (
           <>
-            <p className="mt-3 text-xl text-[var(--color-muted)]">
-              {data.station.short_description}
-            </p>
+            <p className="mt-3 text-xl text-muted">{data.station.short_description}</p>
             <p className="mt-3">{data.station.long_description}</p>
           </>
         ) : null}
@@ -86,7 +84,7 @@ function StationPage() {
                 Ir a la siguiente estación
               </Link>
             ) : (
-              <p className="m-0 rounded-xl bg-[var(--color-surface)] p-4 text-center text-[var(--color-muted)]">
+              <p className="m-0 rounded-xl bg-surface p-4 text-center text-muted">
                 Has llegado a la última estación de la ruta.
               </p>
             )}

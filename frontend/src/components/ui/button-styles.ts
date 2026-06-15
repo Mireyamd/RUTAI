@@ -8,10 +8,9 @@ export const buttonStyles = cva(
   {
     variants: {
       variant: {
-        primary: "bg-[var(--color-primary)] text-[var(--color-primary-text)] hover:bg-[#ffe07a]",
-        secondary:
-          "bg-[var(--color-surface-2)] text-[var(--color-text)] border-2 border-[var(--color-border)] hover:bg-[#1d4459]",
-        danger: "bg-[var(--color-danger)] text-[var(--color-primary-text)] hover:bg-[#ffa994]",
+        primary: "bg-primary text-primary-text hover:bg-[#ffe07a]",
+        secondary: "bg-surface-2 text-text border-2 border-border hover:bg-[#1d4459]",
+        danger: "bg-danger text-primary-text hover:bg-[#ffa994]",
       },
     },
     defaultVariants: {

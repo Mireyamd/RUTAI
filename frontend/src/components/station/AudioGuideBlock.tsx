@@ -12,14 +12,14 @@ interface AudioGuideBlockProps {
  */
 export function AudioGuideBlock({ audio }: AudioGuideBlockProps) {
   return (
-    <section aria-labelledby="audio-titulo" className="rounded-2xl bg-[var(--color-surface)] p-6">
+    <section aria-labelledby="audio-titulo" className="rounded-2xl bg-surface p-6">
       <h2 id="audio-titulo" className="mt-0 text-2xl font-bold">
         Audio guía
       </h2>
 
       {audio ? (
         <>
-          <p className="text-[var(--color-muted)]">Escucha la orientación de esta estación.</p>
+          <p className="text-muted">Escucha la orientación de esta estación.</p>
           <audio
             controls
             preload="none"
@@ -34,7 +34,7 @@ export function AudioGuideBlock({ audio }: AudioGuideBlockProps) {
             <summary className="cursor-pointer text-lg font-bold">
               Leer transcripción del audio guía
             </summary>
-            <p className="mt-2 text-[var(--color-muted)]">{audio.transcript}</p>
+            <p className="mt-2 text-muted">{audio.transcript}</p>
           </details>
         </>
       ) : (

@@ -64,6 +64,19 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## VS Code / Pylance
+
+Si VS Code muestra `Import "fastapi" could not be resolved` en `main.py`, revisa
+que el interprete de Python apunte al entorno virtual del backend:
+
+```text
+backend/venv/Scripts/python.exe
+```
+
+En VS Code: `Python: Select Interpreter` -> `Enter interpreter path` -> selecciona
+`backend/venv/Scripts/python.exe`. No cambies los imports de `main.py`; FastAPI
+esta declarado en `requirements.txt` y debe resolverse con ese interprete.
+
 ## 3. Configurar variables de entorno (opcional)
 
 Copia el archivo de ejemplo. Si no lo haces, se usan valores por defecto.

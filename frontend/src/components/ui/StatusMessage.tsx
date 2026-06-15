@@ -23,16 +23,14 @@ export function StatusMessage({ tone = "info", title, description, children }: S
       aria-live="polite"
       className={cn(
         "rounded-xl border-2 p-5 text-base",
-        isError
-          ? "border-[var(--color-danger)] bg-[#3a1f1c]"
-          : "border-[var(--color-border)] bg-[var(--color-surface)]",
+        isError ? "border-danger bg-[#3a1f1c]" : "border-border bg-surface",
       )}
     >
       <p className="m-0 font-bold">
         <span className="mr-2">{isError ? "Error:" : "Información:"}</span>
         {title}
       </p>
-      {description ? <p className="mt-2 mb-0 text-[var(--color-muted)]">{description}</p> : null}
+      {description ? <p className="mt-2 mb-0 text-muted">{description}</p> : null}
       {children}
     </div>
   );
